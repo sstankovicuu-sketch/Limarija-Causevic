@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { Quote, Star, ChevronLeft, ChevronRight, User } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useRef } from 'react';
+import { Quote, Star, User } from 'lucide-react';
+import { SwipeCarousel } from '@/components/ui/swipe-carousel';
 
 const testimonials = [
   {
@@ -36,43 +36,57 @@ const testimonials = [
   },
 ];
 
+const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => (
+  <div className="p-6 md:p-8 rounded-2xl bg-card border border-border h-full">
+    <Quote className="w-8 h-8 text-primary/30 mb-3" />
+
+    <div className="flex gap-1 mb-3">
+      {[...Array(testimonial.rating)].map((_, i) => (
+        <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+      ))}
+    </div>
+
+    <p className="text-foreground/90 leading-relaxed mb-4 text-sm md:text-base">
+      "{testimonial.content}"
+    </p>
+
+    <div className="flex items-center gap-3 pt-3 border-t border-border">
+      <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
+        <User className="w-5 h-5 text-muted-foreground" />
+      </div>
+      <div>
+        <p className="font-display font-bold text-foreground text-sm">{testimonial.name}</p>
+        <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+      </div>
+    </div>
+  </div>
+);
+
 export const TestimonialsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
 
   return (
-    <section ref={ref} className="py-24 bg-background relative overflow-hidden">
-      {/* Background decoration */}
+    <section ref={ref} className="py-20 md:py-24 bg-background relative overflow-hidden">
       <div className="absolute top-20 left-10 opacity-5">
-        <Quote className="w-64 h-64 text-primary" />
+        <Quote className="w-48 md:w-64 h-48 md:h-64 text-primary" />
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 space-y-4"
+          className="text-center mb-10 md:mb-16 space-y-4"
         >
           <span className="text-primary font-medium uppercase tracking-widest text-sm">
             Iskustva Klijenata
           </span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
             ŠTA KAŽU <span className="text-gradient">NAŠI KLIJENTI</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Naši zadovoljni klijenti su naša najbolja preporuka. Pročitajte šta kažu o 
-            saradnji sa nama.
+          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+            Naši zadovoljni klijenti su naša najbolja preporuka.
           </p>
         </motion.div>
 
@@ -84,110 +98,30 @@ export const TestimonialsSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group"
             >
-              <div className="h-full p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300">
-                {/* Quote icon */}
-                <Quote className="w-10 h-10 text-primary/30 mb-4" />
-
-                {/* Rating */}
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-primary text-primary" />
-                  ))}
-                </div>
-
-                {/* Content */}
-                <p className="text-foreground/90 leading-relaxed mb-6">
-                  "{testimonial.content}"
-                </p>
-
-                {/* Author */}
-                <div className="flex items-center gap-4 pt-4 border-t border-border">
-                  <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center">
-                    <User className="w-6 h-6 text-muted-foreground" />
-                  </div>
-                  <div>
-                    <p className="font-display font-bold text-foreground">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                  </div>
-                </div>
-              </div>
+              <TestimonialCard testimonial={testimonial} />
             </motion.div>
           ))}
         </div>
 
-        {/* Mobile/Tablet Carousel */}
-        <div className="lg:hidden">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-          >
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
-              className="p-8 rounded-2xl bg-card border border-border"
-            >
-              <Quote className="w-10 h-10 text-primary/30 mb-4" />
-
-              <div className="flex gap-1 mb-4">
-                {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-primary text-primary" />
-                ))}
+        {/* Mobile/Tablet Swipe Carousel */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="lg:hidden"
+        >
+          <SwipeCarousel>
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="px-1">
+                <TestimonialCard testimonial={testimonial} />
               </div>
-
-              <p className="text-foreground/90 leading-relaxed mb-6 text-lg">
-                "{testimonials[currentIndex].content}"
-              </p>
-
-              <div className="flex items-center gap-4 pt-4 border-t border-border">
-                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center">
-                  <User className="w-6 h-6 text-muted-foreground" />
-                </div>
-                <div>
-                  <p className="font-display font-bold text-foreground">{testimonials[currentIndex].name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonials[currentIndex].role}</p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Navigation */}
-            <div className="flex items-center justify-between mt-6">
-              <div className="flex gap-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      index === currentIndex ? 'w-8 bg-primary' : 'bg-muted-foreground/30'
-                    }`}
-                  />
-                ))}
-              </div>
-              <div className="flex gap-2">
-                <Button
-                  variant="steel"
-                  size="icon"
-                  onClick={prevSlide}
-                  className="rounded-full"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </Button>
-                <Button
-                  variant="steel"
-                  size="icon"
-                  onClick={nextSlide}
-                  className="rounded-full"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </Button>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+            ))}
+          </SwipeCarousel>
+          <p className="text-center text-muted-foreground text-sm mt-4">
+            ← Prevucite za više →
+          </p>
+        </motion.div>
       </div>
     </section>
   );

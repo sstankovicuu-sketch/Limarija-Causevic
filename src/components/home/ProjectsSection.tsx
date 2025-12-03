@@ -1,7 +1,6 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useRef } from 'react';
+import { SwipeCarousel } from '@/components/ui/swipe-carousel';
 
 const projects = [
   {
@@ -36,38 +35,50 @@ const projects = [
   },
 ];
 
+const ProjectCard = ({ project }: { project: typeof projects[0] }) => (
+  <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+    <img
+      src={project.image}
+      alt={project.title}
+      className="w-full h-full object-cover"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+    <div className="absolute bottom-0 left-0 right-0 p-6">
+      <span className="text-primary text-sm font-medium uppercase tracking-wider">
+        {project.category}
+      </span>
+      <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mt-1">
+        {project.title}
+      </h3>
+      <p className="text-muted-foreground text-sm mt-2">
+        {project.description}
+      </p>
+    </div>
+  </div>
+);
+
 export const ProjectsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % projects.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
-  };
 
   return (
-    <section ref={ref} className="py-24 bg-card relative overflow-hidden">
+    <section ref={ref} className="py-20 md:py-24 bg-card relative overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 space-y-4"
+          className="text-center mb-10 md:mb-16 space-y-4"
         >
           <span className="text-primary font-medium uppercase tracking-widest text-sm">
             Portfolio
           </span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
             NAŠI <span className="text-gradient">PROJEKTI</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Pogledajte neke od naših uspešno realizovanih projekata. Svaki projekat predstavlja 
-            priču o posvećenosti kvalitetu i zadovoljnom klijentu.
+          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+            Pogledajte neke od naših uspešno realizovanih projekata.
           </p>
         </motion.div>
 
@@ -89,7 +100,6 @@ export const ProjectsSection = () => {
                 />
               </div>
               
-              {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <span className="text-primary text-sm font-medium uppercase tracking-wider">
@@ -104,7 +114,6 @@ export const ProjectsSection = () => {
                 </div>
               </div>
 
-              {/* Default overlay (always visible) */}
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background/90 to-transparent group-hover:opacity-0 transition-opacity">
                 <h3 className="font-display text-lg font-bold text-foreground">
                   {project.title}
@@ -114,78 +123,24 @@ export const ProjectsSection = () => {
           ))}
         </div>
 
-        {/* Mobile/Tablet Carousel */}
-        <div className="lg:hidden">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="relative"
-          >
-            <div className="overflow-hidden rounded-2xl">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="relative aspect-[4/3]">
-                  <img
-                    src={projects[currentIndex].image}
-                    alt={projects[currentIndex].title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <span className="text-primary text-sm font-medium uppercase tracking-wider">
-                      {projects[currentIndex].category}
-                    </span>
-                    <h3 className="font-display text-2xl font-bold text-foreground mt-1">
-                      {projects[currentIndex].title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm mt-2">
-                      {projects[currentIndex].description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Navigation */}
-            <div className="flex items-center justify-between mt-6">
-              <div className="flex gap-2">
-                {projects.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      index === currentIndex ? 'w-8 bg-primary' : 'bg-muted-foreground/30'
-                    }`}
-                  />
-                ))}
+        {/* Mobile/Tablet Swipe Carousel */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="lg:hidden"
+        >
+          <SwipeCarousel>
+            {projects.map((project, index) => (
+              <div key={index} className="px-1">
+                <ProjectCard project={project} />
               </div>
-              <div className="flex gap-2">
-                <Button
-                  variant="steel"
-                  size="icon"
-                  onClick={prevSlide}
-                  className="rounded-full"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </Button>
-                <Button
-                  variant="steel"
-                  size="icon"
-                  onClick={nextSlide}
-                  className="rounded-full"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </Button>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+            ))}
+          </SwipeCarousel>
+          <p className="text-center text-muted-foreground text-sm mt-4">
+            ← Prevucite za više →
+          </p>
+        </motion.div>
       </div>
     </section>
   );

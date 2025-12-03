@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Layout } from '@/components/layout/Layout';
 import { Award, Target, Eye, Shield, Users, Clock, ChevronLeft, ChevronRight, CheckCircle, Hammer, Lightbulb, Heart, User } from 'lucide-react';
+import { AnimatedCounter } from '@/components/about/AnimatedCounter';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -121,7 +122,7 @@ const About = () => {
                 className="p-6 rounded-2xl bg-card border border-border text-center"
               >
                 <p className="font-display text-4xl md:text-5xl font-bold text-gradient">
-                  {stat.value}
+                  <AnimatedCounter value={stat.value} duration={2000} />
                 </p>
                 <p className="text-muted-foreground mt-2">{stat.label}</p>
               </div>

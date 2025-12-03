@@ -198,7 +198,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Values */}
+      {/* Values - With Swipe on Mobile */}
       <section className="py-16 md:py-20 bg-card">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
@@ -213,8 +213,8 @@ const About = () => {
             </h2>
           </motion.div>
 
-          {/* Grid - 2x2 on mobile */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          {/* Desktop Grid */}
+          <div className="hidden md:grid grid-cols-4 gap-4">
             {values.map((value, index) => (
               <motion.div
                 key={index}
@@ -226,6 +226,18 @@ const About = () => {
                 <ValueCard value={value} index={index} />
               </motion.div>
             ))}
+          </div>
+
+          {/* Mobile Swipe */}
+          <div className="md:hidden">
+            <SwipeCarousel>
+              {values.map((value, index) => (
+                <div key={index} className="px-1">
+                  <ValueCard value={value} index={index} />
+                </div>
+              ))}
+            </SwipeCarousel>
+            <p className="text-center text-muted-foreground text-sm mt-3">← Prevucite za više →</p>
           </div>
         </div>
       </section>
@@ -289,8 +301,8 @@ const About = () => {
             </h2>
           </motion.div>
 
-          {/* Grid - works on all screens */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {/* Desktop Grid */}
+          <div className="hidden md:grid grid-cols-3 gap-4">
             {certificates.map((cert, index) => (
               <motion.div
                 key={index}
@@ -298,14 +310,31 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-center gap-3 p-3 md:p-4 rounded-xl bg-background border border-border"
+                className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border"
               >
-                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <CheckCircle className="w-4 h-4 text-primary" />
                 </div>
-                <span className="text-foreground text-xs md:text-sm font-medium">{cert}</span>
+                <span className="text-foreground text-sm font-medium">{cert}</span>
               </motion.div>
             ))}
+          </div>
+
+          {/* Mobile Swipe */}
+          <div className="md:hidden">
+            <SwipeCarousel>
+              {certificates.map((cert, index) => (
+                <div key={index} className="px-1">
+                  <div className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border">
+                    <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-4 h-4 text-primary" />
+                    </div>
+                    <span className="text-foreground text-sm font-medium">{cert}</span>
+                  </div>
+                </div>
+              ))}
+            </SwipeCarousel>
+            <p className="text-center text-muted-foreground text-sm mt-3">← Prevucite za više →</p>
           </div>
         </div>
       </section>

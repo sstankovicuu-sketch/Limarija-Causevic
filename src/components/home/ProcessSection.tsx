@@ -1,13 +1,25 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Phone, FileText, Hammer, CheckCircle } from 'lucide-react';
+import { SwipeCarousel } from '@/components/ui/swipe-carousel';
 
 const steps = [
-  { icon: Phone, number: '01', title: 'Kontakt', description: 'Javite nam se' },
-  { icon: FileText, number: '02', title: 'Procena', description: 'Izlazak i ponuda' },
-  { icon: Hammer, number: '03', title: 'Realizacija', description: 'Izrada i montaža' },
-  { icon: CheckCircle, number: '04', title: 'Garancija', description: 'Primopredaja' },
+  { icon: Phone, number: '01', title: 'Kontakt', description: 'Javite nam se i opišite potrebe.' },
+  { icon: FileText, number: '02', title: 'Procena', description: 'Izlazak na teren i detaljna ponuda.' },
+  { icon: Hammer, number: '03', title: 'Realizacija', description: 'Izrada i montaža po dogovoru.' },
+  { icon: CheckCircle, number: '04', title: 'Garancija', description: 'Primopredaja sa garancijom.' },
 ];
+
+const StepCard = ({ step, index }: { step: typeof steps[0]; index: number }) => (
+  <div className="relative text-center p-4">
+    <span className="font-display text-4xl md:text-5xl font-bold text-primary/10">{step.number}</span>
+    <div className="w-14 h-14 mx-auto rounded-xl bg-card border border-border flex items-center justify-center -mt-4 mb-3">
+      <step.icon className="w-7 h-7 text-primary" />
+    </div>
+    <h3 className="font-display text-base font-bold text-foreground mb-1">{step.title}</h3>
+    <p className="text-muted-foreground text-sm">{step.description}</p>
+  </div>
+);
 
 export const ProcessSection = () => {
   const ref = useRef(null);
@@ -28,25 +40,38 @@ export const ProcessSection = () => {
           </h2>
         </motion.div>
 
-        {/* Grid - 2x2 on mobile, 4 columns on desktop */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-4 gap-6">
           {steps.map((step, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="text-center p-4 rounded-xl bg-card border border-border"
             >
-              <span className="font-display text-3xl md:text-4xl font-bold text-primary/20">{step.number}</span>
-              <div className="w-12 h-12 mx-auto rounded-lg bg-secondary flex items-center justify-center -mt-2 mb-2">
-                <step.icon className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="font-display text-sm md:text-base font-bold text-foreground">{step.title}</h3>
-              <p className="text-muted-foreground text-xs md:text-sm">{step.description}</p>
+              <StepCard step={step} index={index} />
             </motion.div>
           ))}
         </div>
+
+        {/* Mobile Swipe */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="md:hidden"
+        >
+          <SwipeCarousel>
+            {steps.map((step, index) => (
+              <div key={index} className="px-1">
+                <div className="bg-card rounded-xl border border-border">
+                  <StepCard step={step} index={index} />
+                </div>
+              </div>
+            ))}
+          </SwipeCarousel>
+          <p className="text-center text-muted-foreground text-sm mt-3">← Prevucite za više →</p>
+        </motion.div>
       </div>
     </section>
   );

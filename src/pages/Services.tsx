@@ -7,6 +7,7 @@ import {
   Droplets, Package, Layers, PanelTop, Wrench, Pipette, 
   Ruler, ArrowRight, CheckCircle, ShoppingBag, Factory
 } from 'lucide-react';
+import { ProcessSection } from '@/components/home/ProcessSection';
 import { SwipeCarousel } from '@/components/ui/swipe-carousel';
 
 const prodaja = [
@@ -262,6 +263,9 @@ const Services = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Process Section */}
+      <ProcessSection />
 
       {/* CTA Section */}
       <section className="py-10 md:py-14 bg-card">

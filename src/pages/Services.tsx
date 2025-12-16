@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { ProcessSection } from '@/components/home/ProcessSection';
 import { SwipeCarousel } from '@/components/ui/swipe-carousel';
+import majstorNaKrovu from '@/assets/majstor_na_krovu.jpg';
 
 const prodaja = [
   {
@@ -247,19 +248,36 @@ const Services = () => {
             <p className="text-center text-muted-foreground text-sm mt-3">← Prevucite za više →</p>
           </div>
 
-          {/* Info box */}
+          {/* Info box with image */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-6 p-4 rounded-xl bg-card border border-primary/20 text-center"
+            className="mt-8 grid md:grid-cols-2 gap-6 items-center"
           >
-            <p className="text-foreground font-medium">
-              🔧 Sve izrađujemo na meru prema vašim specifikacijama
-            </p>
-            <p className="text-muted-foreground text-sm mt-1">
-              Maksimalna dužina izrade: <span className="text-primary font-bold">6,00 m</span>
-            </p>
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
+              <img
+                src={majstorNaKrovu}
+                alt="Majstor na krovu - montaža limarije"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+              <div className="absolute bottom-4 left-4">
+                <span className="text-primary text-sm font-medium uppercase tracking-wider">Naš rad</span>
+                <p className="font-display text-lg font-bold text-foreground">Profesionalna montaža</p>
+              </div>
+            </div>
+            <div className="p-6 rounded-xl bg-card border border-primary/20">
+              <p className="text-foreground font-medium text-lg mb-2">
+                🔧 Sve izrađujemo na meru prema vašim specifikacijama
+              </p>
+              <p className="text-muted-foreground mb-4">
+                Naš tim iskusnih majstora garantuje preciznu izradu i montažu svih limarskih elemenata.
+              </p>
+              <p className="text-muted-foreground text-sm">
+                Maksimalna dužina izrade: <span className="text-primary font-bold text-lg">6,00 m</span>
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>

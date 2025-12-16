@@ -1,13 +1,14 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { SwipeCarousel } from '@/components/ui/swipe-carousel';
+import crniKrovLivada from '@/assets/crni_krov_livada.jpg';
 
 const projects = [
   {
-    title: 'Industrijska Hala Zemun',
+    title: 'Porodična Kuća - Krov',
     category: 'Krovne konstrukcije',
-    description: 'Kompletna krovna konstrukcija za industrijsku halu od 2500m². Korišćen trapezni lim sa termoizolacijom.',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop',
+    description: 'Kompletna krovna konstrukcija sa profilisanim limom u crnoj boji. Precizna izrada i montaža.',
+    image: crniKrovLivada,
   },
   {
     title: 'Stambeni Kompleks Novi Beograd',
@@ -16,10 +17,10 @@ const projects = [
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop',
   },
   {
-    title: 'Ventilacioni Sistem Fabrika',
-    category: 'Industrijski radovi',
-    description: 'Projektovanje i izrada kompletnog ventilacionog sistema za prehrambenu industriju sa INOX elementima.',
-    image: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&h=600&fit=crop',
+    title: 'Industrijska Hala Zemun',
+    category: 'Krovne konstrukcije',
+    description: 'Kompletna krovna konstrukcija za industrijsku halu od 2500m². Korišćen trapezni lim sa termoizolacijom.',
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop',
   },
   {
     title: 'Hotel Spa Centar',

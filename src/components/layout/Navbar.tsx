@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Wrench } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -43,16 +43,10 @@ export const Navbar = () => {
       <nav className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative">
-              <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <Wrench className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <div className="absolute -inset-1 bg-gradient-primary rounded-lg blur opacity-30 group-hover:opacity-50 transition-opacity" />
-            </div>
+          <Link to="/" className="flex items-center group">
             <div className="flex flex-col">
               <span className="font-display text-xl font-bold text-foreground tracking-wide">
-                METAL<span className="text-primary">PRO</span>
+                Limarija <span className="text-primary">Čaušević</span>
               </span>
               <span className="text-xs text-muted-foreground tracking-widest uppercase">
                 Limarski Radovi

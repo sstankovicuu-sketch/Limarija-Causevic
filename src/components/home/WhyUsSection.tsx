@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Shield, Award, Users, Zap, Target, HeartHandshake } from 'lucide-react';
 import { SwipeCarousel } from '@/components/ui/swipe-carousel';
+import krovUizradi from '@/assets/krov_u_izradi.jpg';
 
 const reasons = [
   { icon: Shield, title: 'Garancija Kvaliteta', description: 'Svi radovi dolaze sa pisanom garancijom i premium materijalima.' },
@@ -31,48 +32,74 @@ export const WhyUsSection = () => {
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 md:mb-12"
-        >
-          <span className="text-primary font-medium uppercase tracking-widest text-sm">Zašto mi?</span>
-          <h2 className="font-display text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2">
-            RAZLOZI ZA <span className="text-gradient">POVERENJE</span>
-          </h2>
-        </motion.div>
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Left side - Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="hidden lg:block"
+          >
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur-xl" />
+              <img 
+                src={krovUizradi} 
+                alt="Profesionalna izrada krova" 
+                className="relative rounded-2xl shadow-2xl w-full h-[500px] object-cover"
+              />
+              <div className="absolute bottom-4 left-4 right-4 bg-background/90 backdrop-blur-sm rounded-xl p-4 border border-border">
+                <p className="text-primary font-bold text-lg">Kvalitet na delu</p>
+                <p className="text-muted-foreground text-sm">Svaki projekat realizujemo sa maksimalnom pažnjom</p>
+              </div>
+            </div>
+          </motion.div>
 
-        {/* Desktop Grid */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reasons.map((reason, index) => (
+          {/* Right side - Content */}
+          <div>
             <motion.div
-              key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.6 }}
+              className="text-center lg:text-left mb-8"
             >
-              <ReasonCard reason={reason} />
+              <span className="text-primary font-medium uppercase tracking-widest text-sm">Zašto mi?</span>
+              <h2 className="font-display text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2">
+                RAZLOZI ZA <span className="text-gradient">POVERENJE</span>
+              </h2>
             </motion.div>
-          ))}
-        </div>
 
-        {/* Mobile Swipe */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="md:hidden"
-        >
-          <SwipeCarousel>
-            {reasons.map((reason, index) => (
-              <div key={index} className="px-1">
-                <ReasonCard reason={reason} />
-              </div>
-            ))}
-          </SwipeCarousel>
-          <p className="text-center text-muted-foreground text-sm mt-3">← Prevucite za više →</p>
-        </motion.div>
+            {/* Desktop Grid */}
+            <div className="hidden md:grid md:grid-cols-2 gap-4">
+              {reasons.map((reason, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <ReasonCard reason={reason} />
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Mobile Swipe */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+              className="md:hidden"
+            >
+              <SwipeCarousel>
+                {reasons.map((reason, index) => (
+                  <div key={index} className="px-1">
+                    <ReasonCard reason={reason} />
+                  </div>
+                ))}
+              </SwipeCarousel>
+              <p className="text-center text-muted-foreground text-sm mt-3">← Prevucite za više →</p>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

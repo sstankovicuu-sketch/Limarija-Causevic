@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { AnimatedCounter } from '@/components/about/AnimatedCounter';
 import { SwipeCarousel } from '@/components/ui/swipe-carousel';
-import krovUizradi from '@/assets/krov_u_izradi.jpg';
+import malaKucica from '@/assets/mala_kucica.jpg';
 
 const stats = [
   { value: '20+', label: 'Godina iskustva' },
@@ -144,8 +144,8 @@ const About = () => {
             >
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
                 <img
-                  src={krovUizradi}
-                  alt="Krov u izradi - naš rad"
+                  src={malaKucica}
+                  alt="Naš tim na poslu - izrada krova"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />

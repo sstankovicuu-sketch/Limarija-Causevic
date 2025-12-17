@@ -82,8 +82,8 @@ const About = () => {
             <h1 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mt-3 mb-4">
               TRADICIJA <span className="text-gradient">KVALITETA</span><br />OD 2003. GODINE
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
-              MetalPro je porodična firma sa tradicijom koja se prenosi generacijama. 
+            <p className="text-base md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
+              Limarija Čaušević je porodična firma sa tradicijom koja se prenosi generacijama. 
               Danas smo jedan od vodećih limarskih servisa u regionu.
             </p>
           </motion.div>
@@ -130,7 +130,7 @@ const About = () => {
                   5 zaposlenih i sopstvenu radionicu sa modernom opremom.
                 </p>
                 <p>
-                  Danas, MetalPro zapošljava 15 vrhunskih stručnjaka i poseduje najsavremeniju 
+                  Danas, Limarija Čaušević zapošljava 15 vrhunskih stručnjaka i poseduje najsavremeniju 
                   opremu u regionu. Ali jedna stvar se nikada nije promenila - naša posvećenost kvalitetu.
                 </p>
               </div>

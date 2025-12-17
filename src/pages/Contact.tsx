@@ -88,7 +88,7 @@ const Contact = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section ref={heroRef} className="pt-32 pb-16 relative overflow-hidden">
+      <section ref={heroRef} className="pt-28 pb-10 md:pt-32 md:pb-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-steel-dark/30 via-background to-primary/5" />
         
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -101,22 +101,21 @@ const Contact = () => {
             <span className="text-primary font-medium uppercase tracking-widest text-sm">
               Kontakt
             </span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mt-4 mb-6">
+            <h1 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mt-3 mb-4 md:mt-4 md:mb-6">
               STUPITE U <span className="text-gradient">KONTAKT</span>
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl">
+            <p className="text-base md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
               Imate pitanje, potrebna vam je ponuda ili želite da zakažete konsultacije? 
-              Tu smo za vas. Javite nam se na bilo koji od navedenih načina i očekujte 
-              brz odgovor našeg tima.
+              Tu smo za vas. Javite nam se i očekujte brz odgovor.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-12 bg-card">
+      <section className="py-8 md:py-12 bg-card">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
             {contactInfo.map((info, index) => (
               <motion.div
                 key={index}
@@ -128,23 +127,23 @@ const Contact = () => {
                 {info.action ? (
                   <a
                     href={info.action}
-                    className="block h-full p-6 rounded-2xl bg-background border border-border hover:border-primary/50 transition-all group"
+                    className="block h-full p-4 md:p-6 rounded-xl md:rounded-2xl bg-background border border-border hover:border-primary/50 transition-all group"
                   >
-                    <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center mb-4 group-hover:bg-primary/10 transition-colors">
-                      <info.icon className="w-7 h-7 text-primary" />
+                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-lg md:rounded-xl bg-secondary flex items-center justify-center mb-2 md:mb-4 group-hover:bg-primary/10 transition-colors">
+                      <info.icon className="w-5 h-5 md:w-7 md:h-7 text-primary" />
                     </div>
-                    <h3 className="font-display font-bold text-foreground mb-2">{info.title}</h3>
-                    <p className="text-foreground font-medium">{info.primary}</p>
-                    <p className="text-muted-foreground text-sm">{info.secondary}</p>
+                    <h3 className="font-display text-sm md:text-base font-bold text-foreground mb-1 md:mb-2">{info.title}</h3>
+                    <p className="text-foreground text-xs md:text-base font-medium break-all md:break-normal">{info.primary}</p>
+                    <p className="text-muted-foreground text-xs md:text-sm hidden md:block">{info.secondary}</p>
                   </a>
                 ) : (
-                  <div className="h-full p-6 rounded-2xl bg-background border border-border">
-                    <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center mb-4">
-                      <info.icon className="w-7 h-7 text-primary" />
+                  <div className="h-full p-4 md:p-6 rounded-xl md:rounded-2xl bg-background border border-border">
+                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-lg md:rounded-xl bg-secondary flex items-center justify-center mb-2 md:mb-4">
+                      <info.icon className="w-5 h-5 md:w-7 md:h-7 text-primary" />
                     </div>
-                    <h3 className="font-display font-bold text-foreground mb-2">{info.title}</h3>
-                    <p className="text-foreground font-medium">{info.primary}</p>
-                    <p className="text-muted-foreground text-sm">{info.secondary}</p>
+                    <h3 className="font-display text-sm md:text-base font-bold text-foreground mb-1 md:mb-2">{info.title}</h3>
+                    <p className="text-foreground text-xs md:text-base font-medium">{info.primary}</p>
+                    <p className="text-muted-foreground text-xs md:text-sm hidden md:block">{info.secondary}</p>
                   </div>
                 )}
               </motion.div>
@@ -154,9 +153,9 @@ const Contact = () => {
       </section>
 
       {/* Form & Map Section */}
-      <section className="py-20 bg-background">
+      <section className="py-10 md:py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -164,16 +163,16 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="p-8 rounded-2xl bg-card border border-border">
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-primary flex items-center justify-center">
-                    <MessageSquare className="w-7 h-7 text-primary-foreground" />
+              <div className="p-5 md:p-8 rounded-xl md:rounded-2xl bg-card border border-border">
+                <div className="flex items-center gap-3 md:gap-4 mb-6 md:mb-8">
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg md:rounded-xl bg-gradient-primary flex items-center justify-center">
+                    <MessageSquare className="w-6 h-6 md:w-7 md:h-7 text-primary-foreground" />
                   </div>
                   <div>
-                    <h2 className="font-display text-2xl font-bold text-foreground">
+                    <h2 className="font-display text-xl md:text-2xl font-bold text-foreground">
                       Pošaljite nam poruku
                     </h2>
-                    <p className="text-muted-foreground">Odgovaramo u roku od 24h</p>
+                    <p className="text-muted-foreground text-sm">Odgovaramo u roku od 24h</p>
                   </div>
                 </div>
 

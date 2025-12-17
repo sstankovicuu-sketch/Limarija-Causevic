@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Clock, Wrench, Facebook, Instagram, Linkedin, ArrowRight } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const Footer = () => {
@@ -10,17 +10,14 @@ export const Footer = () => {
       {/* Decorative top line */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-primary" />
       
-      <div className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="container mx-auto px-4 lg:px-8 py-12 md:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Company Info */}
-          <div className="space-y-6">
-            <Link to="/" className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <Wrench className="w-6 h-6 text-primary-foreground" />
-              </div>
+          <div className="space-y-4 md:space-y-6">
+            <Link to="/" className="flex items-center">
               <div className="flex flex-col">
-                <span className="font-display text-xl font-bold text-foreground tracking-wide">
-                  METAL<span className="text-primary">PRO</span>
+                <span className="font-display text-lg md:text-xl font-bold text-foreground tracking-wide">
+                  Limarija <span className="text-primary">Čaušević</span>
                 </span>
                 <span className="text-xs text-muted-foreground tracking-widest uppercase">
                   Limarski Radovi
@@ -133,12 +130,12 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-border">
+        <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-muted-foreground text-sm text-center md:text-left">
-              © {currentYear} MetalPro. Sva prava zadržana. Izrađeno sa ❤️ za kvalitetan zanat.
+            <p className="text-muted-foreground text-xs md:text-sm text-center md:text-left">
+              © {currentYear} Limarija Čaušević. Sva prava zadržana.
             </p>
-            <div className="flex gap-6 text-sm text-muted-foreground">
+            <div className="flex gap-4 md:gap-6 text-xs md:text-sm text-muted-foreground">
               <a href="#" className="hover:text-primary transition-colors">Politika privatnosti</a>
               <a href="#" className="hover:text-primary transition-colors">Uslovi korišćenja</a>
             </div>

@@ -14,12 +14,12 @@ const reasons = [
 ];
 
 const ReasonCard = ({ reason }: { reason: typeof reasons[0] }) => (
-  <div className="h-full p-5 md:p-6 rounded-xl bg-card border border-border">
-    <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center mb-4">
-      <reason.icon className="w-6 h-6 text-primary-foreground" />
+  <div className="h-full p-4 md:p-6 rounded-xl bg-card border border-border">
+    <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gradient-primary flex items-center justify-center mb-3 md:mb-4">
+      <reason.icon className="w-5 h-5 md:w-6 md:h-6 text-primary-foreground" />
     </div>
-    <h3 className="font-display text-base md:text-lg font-bold text-foreground mb-2">{reason.title}</h3>
-    <p className="text-muted-foreground text-sm leading-relaxed">{reason.description}</p>
+    <h3 className="font-display text-sm md:text-lg font-bold text-foreground mb-1 md:mb-2">{reason.title}</h3>
+    <p className="text-muted-foreground text-xs md:text-sm leading-relaxed">{reason.description}</p>
   </div>
 );
 
@@ -28,11 +28,11 @@ export const WhyUsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="py-16 md:py-24 bg-background relative overflow-hidden">
+    <section ref={ref} className="py-12 md:py-24 bg-background relative overflow-hidden">
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
           {/* Left side - Image */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -55,15 +55,15 @@ export const WhyUsSection = () => {
           </motion.div>
 
           {/* Right side - Content */}
-          <div>
+          <div className="w-full overflow-hidden">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="text-center lg:text-left mb-8"
+              className="text-center lg:text-left mb-6 md:mb-8"
             >
-              <span className="text-primary font-medium uppercase tracking-widest text-sm">Zašto mi?</span>
-              <h2 className="font-display text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2">
+              <span className="text-primary font-medium uppercase tracking-widest text-xs md:text-sm">Zašto mi?</span>
+              <h2 className="font-display text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2">
                 RAZLOZI ZA <span className="text-gradient">POVERENJE</span>
               </h2>
             </motion.div>

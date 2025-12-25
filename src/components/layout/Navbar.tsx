@@ -82,12 +82,12 @@ export const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
-            <a href="tel:+381601234567" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+            <a href="tel:+381653400631" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
               <Phone className="w-4 h-4" />
-              <span className="text-sm font-medium">+381 60 123 4567</span>
+              <span className="text-sm font-medium">065 3400 631</span>
             </a>
             <Button variant="hero" size="lg" asChild>
-              <Link to="/kontakt">Zatražite Ponudu</Link>
+              <a href="tel:+381653400631">Pozovite</a>
             </Button>
           </div>
 
@@ -138,14 +138,14 @@ export const Navbar = () => {
                   className="pt-4 border-t border-border"
                 >
                   <a 
-                    href="tel:+381601234567" 
+                    href="tel:+381653400631" 
                     className="flex items-center gap-3 py-3 px-4 text-muted-foreground"
                   >
                     <Phone className="w-5 h-5 text-primary" />
-                    <span className="font-medium">+381 60 123 4567</span>
+                    <span className="font-medium">065 3400 631</span>
                   </a>
                   <Button variant="hero" size="lg" className="w-full mt-4" asChild>
-                    <Link to="/kontakt">Zatražite Ponudu</Link>
+                    <a href="tel:+381653400631">Pozovite</a>
                   </Button>
                 </motion.div>
               </div>

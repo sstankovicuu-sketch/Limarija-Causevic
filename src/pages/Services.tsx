@@ -305,7 +305,7 @@ const Services = () => {
                 <Link to="/kontakt">Zatražite Ponudu</Link>
               </Button>
               <Button variant="heroOutline" size="lg" asChild>
-                <a href="tel:+381601234567">Pozovite Nas</a>
+                <a href="tel:+381653400631">Pozovite Nas</a>
               </Button>
             </div>
           </motion.div>

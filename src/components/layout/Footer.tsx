@@ -97,10 +97,10 @@ export const Footer = () => {
               Kontakt Info
             </h4>
             <div className="space-y-4">
-              <a href="tel:+381601234567" className="flex items-start gap-3 text-muted-foreground hover:text-primary transition-colors">
+              <a href="tel:+381653400631" className="flex items-start gap-3 text-muted-foreground hover:text-primary transition-colors">
                 <Phone className="w-5 h-5 mt-0.5 text-primary" />
                 <div>
-                  <p className="font-medium text-foreground">+381 60 123 4567</p>
+                  <p className="font-medium text-foreground">065 3400 631</p>
                   <p className="text-sm">Pozovite nas</p>
                 </div>
               </a>

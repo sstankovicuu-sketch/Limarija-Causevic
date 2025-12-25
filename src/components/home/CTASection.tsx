@@ -63,7 +63,7 @@ export const CTASection = () => {
                 </Link>
               </Button>
               <Button variant="heroOutline" size="lg" asChild>
-                <a href="tel:+381601234567">
+                <a href="tel:+381653400631">
                   <Phone className="w-4 h-4" />
                   Pozovite
                 </a>

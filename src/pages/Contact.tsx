@@ -14,9 +14,9 @@ const contactInfo = [
   {
     icon: Phone,
     title: 'Telefon',
-    primary: '+381 60 123 4567',
-    secondary: '+381 11 234 5678',
-    action: 'tel:+381601234567',
+    primary: '065 3400 631',
+    secondary: '',
+    action: 'tel:+381653400631',
   },
   {
     icon: Mail,
@@ -378,7 +378,7 @@ const Contact = () => {
               {/* Quick Actions */}
               <div className="grid sm:grid-cols-2 gap-4">
                 <Button variant="heroOutline" size="lg" className="w-full" asChild>
-                  <a href="tel:+381601234567">
+                  <a href="tel:+381653400631">
                     <Phone className="w-5 h-5" />
                     Pozovite Odmah
                   </a>
@@ -411,9 +411,9 @@ const Contact = () => {
               Pozovite nas direktno za hitne upite ili brze informacije.
             </p>
             <Button variant="hero" size="xl" asChild>
-              <a href="tel:+381601234567" className="group">
+              <a href="tel:+381653400631" className="group">
                 <Phone className="w-5 h-5" />
-                +381 60 123 4567
+                065 3400 631
               </a>
             </Button>
           </motion.div>

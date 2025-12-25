@@ -4,6 +4,7 @@ import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import logo from '@/assets/logo.png';
 
 const navItems = [
   { name: 'Početna', path: '/' },
@@ -43,7 +44,8 @@ export const Navbar = () => {
       <nav className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center group">
+          <Link to="/" className="flex items-center gap-3 group">
+            <img src={logo} alt="Limarija Čaušević logo" className="w-12 h-12 object-contain" />
             <div className="flex flex-col">
               <span className="font-display text-xl font-bold text-foreground tracking-wide">
                 Limarija <span className="text-primary">Čaušević</span>

@@ -86,7 +86,7 @@ export const Navbar = () => {
               <Phone className="w-4 h-4" />
               <span className="text-sm font-medium">065 3400 631</span>
             </a>
-            <Button variant="hero" size="xl" className="px-8" asChild>
+            <Button variant="hero" size="lg" className="px-10" asChild>
               <a href="tel:+381653400631">Pozovite</a>
             </Button>
           </div>

@@ -6,55 +6,55 @@
 
 @layer base {
   :root {
-    /* Industrial Premium Color System */
-    --background: 220 15% 8%;
+    /* Neon Green Color System */
+    --background: 210 20% 12%;
     --foreground: 0 0% 95%;
 
-    --card: 220 15% 12%;
+    --card: 210 20% 15%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 220 15% 10%;
+    --popover: 210 20% 13%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 25 95% 55%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 100 70% 55%;
+    --primary-foreground: 210 20% 10%;
 
-    --secondary: 220 10% 18%;
+    --secondary: 210 15% 20%;
     --secondary-foreground: 0 0% 90%;
 
-    --muted: 220 10% 20%;
-    --muted-foreground: 220 10% 60%;
+    --muted: 210 15% 22%;
+    --muted-foreground: 210 10% 60%;
 
-    --accent: 200 15% 40%;
+    --accent: 100 50% 40%;
     --accent-foreground: 0 0% 95%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 10% 20%;
-    --input: 220 10% 18%;
-    --ring: 25 95% 55%;
+    --border: 210 15% 22%;
+    --input: 210 15% 20%;
+    --ring: 100 70% 55%;
 
     --radius: 0.5rem;
 
-    /* Custom Industrial Colors */
+    /* Custom Colors */
     --steel: 210 10% 60%;
-    --steel-dark: 210 15% 25%;
-    --copper: 25 95% 55%;
-    --copper-glow: 25 100% 65%;
-    --metal-shine: 45 10% 90%;
-    --workshop: 30 15% 15%;
+    --steel-dark: 210 20% 18%;
+    --copper: 100 70% 55%;
+    --copper-glow: 100 80% 65%;
+    --metal-shine: 100 30% 85%;
+    --workshop: 210 20% 14%;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(25 95% 55%), hsl(35 100% 60%));
-    --gradient-steel: linear-gradient(135deg, hsl(210 10% 40%), hsl(210 15% 25%));
-    --gradient-dark: linear-gradient(180deg, hsl(220 15% 8%), hsl(220 18% 5%));
-    --gradient-hero-overlay: linear-gradient(135deg, hsla(220, 15%, 8%, 0.85) 0%, hsla(220, 15%, 8%, 0.6) 50%, hsla(25, 95%, 55%, 0.1) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(100 70% 55%), hsl(100 80% 65%));
+    --gradient-steel: linear-gradient(135deg, hsl(210 15% 35%), hsl(210 20% 18%));
+    --gradient-dark: linear-gradient(180deg, hsl(210 20% 12%), hsl(210 25% 8%));
+    --gradient-hero-overlay: linear-gradient(135deg, hsla(210, 20%, 12%, 0.85) 0%, hsla(210, 20%, 12%, 0.6) 50%, hsla(100, 70%, 55%, 0.1) 100%);
     
     /* Shadows */
-    --shadow-glow: 0 0 40px hsla(25, 95%, 55%, 0.3);
+    --shadow-glow: 0 0 40px hsla(100, 70%, 55%, 0.3);
     --shadow-card: 0 10px 40px -10px hsla(0, 0%, 0%, 0.5);
-    --shadow-button: 0 4px 20px hsla(25, 95%, 55%, 0.4);
+    --shadow-button: 0 4px 20px hsla(100, 70%, 55%, 0.4);
 
     /* Sidebar (keeping defaults) */
     --sidebar-background: 220 15% 10%;
